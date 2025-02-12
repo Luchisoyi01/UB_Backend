@@ -1,0 +1,180 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="{% static 'logo/0.png' %}" />
+    <link rel="stylesheet" href="{% static 'homecss/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'homecss/register.css' %}" />
+    <link rel="stylesheet" href="{% static 'homecss/alert.css' %}" />
+    <title>Uzuri Bank</title>
+    <style>
+      .error-message {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f44336;
+        color: white;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+      }
+      #close-error {
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <img class="logo_image" src="{% static 'logo/0.png' %}" alt="logo" />
+      </div>
+      <div class="mainsection">
+        <a class="main_a" href="{% url 'home:index' %}">Home</a>
+        <a class="main_a" href="{% url 'home:about' %}">About</a>
+        <a class="main_a" href="{% url 'home:learn' %}">Learn</a>
+      </div>
+      <div>
+        <a href="{% url 'home:login' %}">
+          <button class="cta">
+            <span>Log in</span>
+            <svg width="15px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </button>
+        </a>
+      </div>
+    </header>
+    <hr />
+    <form action="{% url 'home:register' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% if error %}
+        <div id="error-message" class="error-message">
+          <span>{{ error }}</span>
+          <button id="close-error" onclick="closeError()">×</button>
+        </div>
+      {% endif %}
+      <div class="details">
+          <div class="reg">
+            <label for="username">Username:</label>
+            {{ client_form.Username }}              
+            <label for="name">Name:</label>
+            {{ client_form.Name }}              
+            <label for="accountNumber">Account Number:</label>
+            <div class="account-container">
+              {{ client_form.Account_Number }}
+              <button type="button" class="generate-btn" onclick="generateAccountNumber()">Generate</button>
+            </div>              
+            <label for="Idno">ID Number:</label>
+            {{ client_form.ID_Number }}              
+            <label for="email">Email:</label>
+            {{ client_form.Email }}              
+            <label for="phone">Phone Number:</label>
+            {{ client_form.Phone_Number }}
+          </div>          
+          <div class="password">
+            <label for="address">Address:</label>
+            {{ client_form.Address }}             
+            <label for="password">Password:</label>
+            <div class="grid-container" id="passwordImagesContainer">          
+              {% for image in password_images %}
+              <label class="grid-item">
+                <input type="checkbox" class="image-checkbox" name="password_images" value="{{ image.id }}">
+                <img src="{{ image.image.url }}" alt="Image {{ image.id }}">    
+              </label>
+              {% endfor %}                       
+          </div>
+          </div>
+      </div>      
+      <div class="button">
+        <a href="{% url 'home:login' %}">
+          <button type="button" class="submit">Return to Login</button>
+        </a>
+        <button type="submit" class="submit">Submit</button>
+      </div>
+    </form>
+      
+    <!-- Custom Alert Modal -->
+    <div id="customAlert" class="modal">
+      <div class="modal-content">
+        <p id="alertMessage"></p>
+        <button onclick="closeAlert()">OK</button>
+      </div>
+    </div>            
+
+    <script src="{% static 'homescript/alert.js' %}"></script>
+    <script src="{% static 'homescript/register.js' %}"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+          loadPasswordImages();
+      });
+
+      function generateAccountNumber() {
+        // Generate a random 16-digit number for the account number
+        var accountNumber = '' + Math.floor(1000000000 + Math.random() * 9000000000);
+        
+        // Set the account number field with the generated number
+        document.getElementById("id_Account_Number").value = accountNumber;
+    }
+
+      document.querySelector('form').addEventListener('submit', function(e) {
+        const email = document.getElementById('email').value;
+        const phoneNumber = document.getElementById('phone').value;
+        let errorMessage = '';
+
+        // Validate email
+        if (!email.includes('@')) {
+          errorMessage += 'Please enter a valid email address.\n';
+        }
+
+        // Validate phone number (10 digits)
+        if (!/^\d{10}$/.test(phoneNumber)) {
+          errorMessage += 'Please enter a valid phone number.\n';
+        }
+
+        // If there are validation errors, prevent form submission and show the alert
+        if (errorMessage) {
+          e.preventDefault();
+          showAlert(errorMessage);
+        }
+      });
+
+      // Show alert modal
+      function showAlert(message) {
+        const modal = document.getElementById('customAlert');
+        const alertMessage = document.getElementById('alertMessage');
+        alertMessage.textContent = message;
+        modal.style.display = 'block';
+      }
+
+      // Close alert modal
+      function closeAlert() {
+        document.getElementById('customAlert').style.display = 'none';
+      }
+
+      // Ensure only four images are selected as the password
+      function loadPasswordImages() {
+        const checkboxes = document.querySelectorAll('.image-checkbox');
+        checkboxes.forEach(checkbox => {
+          checkbox.addEventListener('change', function() {
+            const selectedCheckboxes = document.querySelectorAll('.image-checkbox:checked');
+            if (selectedCheckboxes.length > 4) {
+              alert('You can only select up to 4 images.');
+              this.checked = false;
+            }
+          });
+        });
+      }
+      function closeError() {
+        var errorMessage = document.getElementById("error-message");
+        errorMessage.style.display = "none";
+    }
+    </script>
+  </body>
+</html>
