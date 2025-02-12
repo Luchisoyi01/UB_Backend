@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="{% static 'logo/0.png' %}">
+  <title>{% block title %}Default Title{% endblock %}</title>
+  {% block extra_css %}{% endblock %}
+  <link rel="stylesheet" href="{% static 'homecss/header.css' %}"> 
+  {% block styles %}{% endblock %}
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+     <img class="logo_image" src="{% static 'logo/0.png' %}" alt="logo"> 
+    </div>
+    <div class="mainsection">
+      <a class="main_a" href="{% url 'home:index' %}">Home</a>
+      <a class="main_a" href="{% url 'home:about' %}">About</a>
+      <a class="main_a" href="{% url 'home:learn' %}">Learn</a>
+    </div>
+    <div>
+      <a href="{% url 'home:login' %}">
+        <button class="cta">
+          <span>Log in</span>
+          <svg width="15px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </button>
+      </a>
+    </div>    
+  </header>
+  
+  {% block content %}{% endblock %}
+
+  
+  {% block scripts %}{% endblock %}
+</body>
+</html>
