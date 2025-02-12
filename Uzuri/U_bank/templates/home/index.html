@@ -1,0 +1,19 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %}Uzuri Bank{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'homecss/index.css' %}"> 
+{% endblock %}
+
+{% block content %}
+  <hr>
+  <section class="home">
+    <div class="right">
+      <h2>Uzuri Bank</h2>
+      <p>We are where you need us to be, delivering service to you. Whether you would like to come into one of our branches, transact virtually on mobile and internet banking, or pay, save, and borrow all on your mobile phone; we are at every touchpoint. Discover your most convenient spot.</p>
+    </div>    
+  </section>
+  <footer>
+    <p>&copy; 2024 Uzuri Bank. All rights reserved.</p>
+  </footer>
+{% endblock %}
