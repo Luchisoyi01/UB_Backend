@@ -1,0 +1,113 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %}Uzuri Bank{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'homecss/about.css' %}" />
+{% endblock %}
+
+{% block content %}
+ 
+  <div class="history">
+    <div class="histo">
+      <h1>History</h1>
+      <p>
+        Uzuri Bank was founded by a group of visionary farmers who recognized
+        the need for a financial institution that truly understands the
+        agricultural community. Established in 2017, Uzuri Bank has grown from
+        a small cooperative to a trusted financial partner for farmers and
+        rural communities across the region and the country.
+      </p>
+    </div>
+    <div class="histo_image">
+      <img src="{% static 'logo/4.png' %}" alt="history" />
+    </div>
+  </div>
+  <div class="mission">
+    <div class="histo_image">
+      <img src="{% static 'logo/3.png' %}" alt="" />
+    </div>
+    <div class="miss">
+      <h1>Our Mission</h1>
+      <p>
+        Our mission is to empower farmers and rural communities by providing
+        accessible, reliable, and innovative financial services. We are
+        committed to supporting the agricultural sector and fostering
+        sustainable growth.
+      </p>
+    </div>
+  </div>
+  <div class="team"></div>
+  <div class="values">
+    <div class="value_info">
+      <h1>Our Values</h1>
+      <p>
+        At Uzuri Bank, our values are the foundation of everything we do. They
+        guide our actions, shape our culture, and reflect our commitment to
+        our customers and communities.
+      </p>
+    </div>
+    <div class="value_example" id="values-container">
+      <!-- Values will be dynamically generated here -->
+    </div>
+  </div>
+  <!--Our services section-->
+  <section class="services">
+    <div class="services-header">
+      <h1>Our Services</h1>
+    </div>
+    <div class="services-card" id="service-card">
+      <h3 id="service-title">Agricultural Loans</h3>
+      <p id="service-description">
+        Tailored financing solutions to help farmers invest in equipment,
+        seeds, and other essentials.
+      </p>
+    </div>
+  </section>
+  <section class="contact">
+    <div class="get_in_touch">
+      <div class="inquire">
+        <h1>Get in Touch</h1>
+        <p>For inquiries, feedback, or support, please contact us</p>
+      </div>
+      <div class="contact_info">
+        <h3>Email</h3>
+        <p>uzuribank@gmail.com</p>
+      </div>
+      <div class="contact_info">
+        <h3>Phone Number</h3>
+        <p>+254 700 233 444</p>
+      </div>
+    </div>
+    <div class="get_in_touch">
+      <div class="inquire">
+        <h1>Visit Us</h1>
+        <p>Our offices are located at</p>
+      </div>
+      <div class="contact_info">
+        <h3>Head Office</h3>
+        <p>Uzuri Bank Building, Nairobi</p>
+      </div>
+      <div class="contact_info">
+        <h3>Branch Office</h3>
+        <p>Uzuri Bank Building, Eldoret</p>
+      </div>
+    </div>
+  </section>
+  <a class="top" href="#top" title="Back to top">
+    <button class="button" title="Back to top">
+      <svg class="svgIcon" viewBox="0 0 384 512">
+        <path
+          d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+        ></path>
+      </svg>
+    </button>
+  </a>
+  <footer>
+    <p>&copy; 2024 Uzuri Bank. All rights reserved.</p>
+  </footer>
+
+{% endblock %}
+    
+{% block scripts %}
+  <script src="{% static 'homescript/about.js' %}"></script>
+{% endblock %}
