@@ -14,13 +14,14 @@ urlpatterns = [
     
     #client urls
     path('account/', views.account, name='account'),
-    path('Loan/', views.Loan, name='Loan'),
-    path('profile/', views.profile, name='profile'),
+    path('clientLoan/', views.clientLoan, name='clientLoan'),
+    path('clientprofile/', views.clientprofile, name='clientprofile'),
+    path('transaction', views.transaction, name='transaction'),
     
     #admin urls
     path('accounts/', views.accounts, name='Accounts'),
     path('logs/', views.logs, name='Logs'),
-    path('loans/', views.loans, name='Loans'),
+    path('loans/', views.admin_loans, name='Loans'),
     path('clients/', views.clients, name='Clients'),
-    
+    path('adminprofile/',views.adminprofile, name='adminprofile'),
 ]
