@@ -1,0 +1,166 @@
+{% extends 'client/base.html' %}
+{% load static %}
+{% block title %}Transaction History{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'Styles/transaction.css' %}"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}
+
+{% block styles %}  
+  <style>
+    .transaction-table {
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    table th {
+      background-color: #f4f4f4;
+    }
+    .print-icon {
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+      margin-bottom: 10px;
+    }  
+    .print-icon:hover {
+      color: #007bff;
+    }
+    
+    /* Popup Styles */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      text-align: center;
+    }
+    .popup-content select, .popup-content input {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+    }
+    .popup-content button {
+      padding: 8px 15px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}  
+  <div class="container">
+    <div class="transaction-table">
+      <!-- Print Icon -->
+      <i class="fa fa-print print-icon" onclick="printTransactionTable()" title="Print"></i>
+
+      <h2>Transaction History</h2>
+      <table id="transactionTable">
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Receipt Account</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for transaction in transactions %}
+          <tr>
+            <td>{{ transaction.Amount }}</td>
+            <td>{{ transaction.Receipt_Accno }}</td>
+            <td>{{ transaction.Time|date:"d M Y, g:i a" }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="3">No transactions found</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+      <br><br>
+         
+      <a href="{% url 'home:client_page' %}" class="btn btn-primary">Back</a>
+    </div>
+  </div>
+
+  <!-- Transaction Popup -->
+  <div id="transactionPopup" class="popup-overlay">
+    <div class="popup-content">
+      <h2>Transaction</h2>
+      <label for="accountType">Choose Account:</label>
+      <select id="accountType">
+        <option value="Fixed">Fixed Acc (Bal: {{ account.Fixed_Account|floatformat:2 }})</option>
+        <option value="Salary">Salary Acc (Bal: {{ account.Salary_Account|floatformat:2 }})</option>
+        <option value="Savings">Savings Acc (Bal: {{ account.Savings_Account|floatformat:2 }})</option>
+      </select>
+      
+      <label for="recipientAccount">Recipient Account Number:</label>
+      <input type="number" id="recipientAccount" placeholder="Enter account number">      
+      <label for="transactionAmount">Amount:</label>
+      <input type="number" id="transactionAmount" placeholder="Enter amount">      
+      <button onclick="submitTransaction()" class="btn btn-success">Submit</button>
+      <button onclick="closeTransactionPopup()" class="btn btn-danger">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    // Print Only the Transaction Table
+    function printTransactionTable() {
+      var printWindow = window.open('', '', 'width=800,height=600');
+      var tableContents = document.getElementById("transactionTable").outerHTML;
+
+      printWindow.document.write(`
+        <html>
+          <head>
+            <title>Transaction History</title>
+            <style>
+              table {
+                width: 100%;
+                border-collapse: collapse;
+              }
+              th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+              }
+              th {
+                background-color: #f4f4f4;
+              }
+            </style>
+          </head>
+          <body>
+            <h2>Transaction History</h2>
+            ${tableContents}
+          </body>
+        </html>
+      `);
+
+      printWindow.document.close();
+      printWindow.print();
+    }
+  </script>
+{% endblock %}
