@@ -1,0 +1,125 @@
+.profile-update {
+  max-width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-update h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.profile-update label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.profile-update input[type="text"],
+.profile-update input[type="email"],
+.profile-update input[type="number"],
+.profile-update input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid  rgb(131, 194, 162);
+  border-radius: 5px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.profile-update .buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.profile-update button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-update .save-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.profile-update .cancel-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.profile-update .save-btn:hover {
+  background-color: #45a049;
+}
+
+.profile-update .cancel-btn:hover {
+  background-color: #e53935;
+}
+
+#imagePreview {
+  margin-top: 10px;
+  max-width: 200px;
+  height: auto;
+  display: none;
+}
+.profile{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.grid-container {  
+  display: grid;
+  border: 1px solid rgb(131, 194, 162);
+  border-radius: 5px;
+  padding: 48px 10px;
+  margin-right: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+  width: calc(100% - 20px);
+  margin-bottom: 5px;
+}
+.grid-item {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+.grid-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.grid-item input[type="checkbox"] {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  z-index: 10;
+  opacity: 0;
+  cursor: pointer;
+}
+.grid-item input[type="checkbox"]:checked + img {
+  border: 2px solid rgb(10, 12, 90);
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    grid-template-columns: 1fr;
+  }
+}
