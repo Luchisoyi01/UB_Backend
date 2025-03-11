@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+  background-color: rgb(255, 255, 255);
+}
+
+/* Main home section */
+.home {
+  background: url(../images/home.jpeg) no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  height: 31.0rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 50px;
+}
+
+.right h2 {
+  font-weight: 700;
+  font-size: 4.5rem;
+  margin-top: -20px;
+  margin-bottom: 10px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.right p {
+  margin: 3px;
+  font-size: 1.45rem;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: white;
+}
+
+footer {
+  background-color: rgb(10, 12, 90);
+  color: white;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+}

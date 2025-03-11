@@ -1,0 +1,34 @@
+.question-section {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.question-section h2 {
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+textarea {
+  margin: 0;
+  width: 20%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+button:hover {
+  background: #0056b3;
+}
+#responseMessage {
+  margin-top: 10px;
+  color: green;
+}

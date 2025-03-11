@@ -1,0 +1,109 @@
+body{
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+  background-color: rgb(255, 255, 255);
+}
+
+.logo_image{
+  height: 100px;
+  margin-left: -30px;
+}
+hr{
+  margin: 0;
+  border: 1px solid rgb(131, 194, 162);
+}
+.header{
+  display: flex;
+  flex-direction: row;
+  height: 3rem;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-between; 
+}
+.mainsection{
+  font-size: 18px;
+  font-weight: 700;  
+}
+.main_a{
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  color: rgb(10, 12, 90);
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 700; 
+  font-size: medium;
+}
+.main_a:hover{
+  color: rgb(131, 194, 162);
+  transition: 1s;  
+}
+/* login button*/ 
+.cta {
+  position: relative;
+  margin: auto;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 50px;
+  background: rgb(131, 194, 162);
+  width: 45px;
+  height: 45px;
+  transition: all 0.3s ease;
+}
+
+.cta span {
+  position: relative;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgb(10, 12, 90);
+  padding-bottom: 5px;
+}
+
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: rgb(10, 12, 90);
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover:before {
+  width: 100%;
+  background: rgb(131, 194, 162);
+}
+
+.cta:hover svg {
+  transform: translateX(0);
+}
+
+.cta:active {
+  transform: scale(0.95);
+}
+footer{
+  background-color: rgb(10, 12, 90);
+  color: white;
+  text-align: center;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}

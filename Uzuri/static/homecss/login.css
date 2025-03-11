@@ -1,0 +1,120 @@
+.login {
+  display: flex;
+  position: relative;
+  margin: 50px auto 0;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  padding: 20px;
+  border: 2px solid rgb(131, 194, 162);
+  border-radius: 20px;
+  background-color: white;
+}
+@media screen and (max-width: 768px) {
+  .login {
+    width: 90%;
+  }
+}
+.login label {
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+input {
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+  border-radius: 5px;
+  border: 1px solid rgb(131, 194, 162);
+  padding: 10px;
+  outline: none;
+}
+input[type="text"]:focus {
+  border: 1px solid rgb(10, 12, 90); 
+  outline: none; 
+}
+.grid-container {
+  border: 1px solid rgb(131, 194, 162);
+  border-radius: 5px;
+  padding: 20px 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
+}
+.grid-item {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grid-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.grid-item input[type="checkbox"] {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  z-index: 10;
+  opacity: 0;
+  cursor: pointer;
+}
+.grid-item input[type="checkbox"]:checked + img {
+  border: 2px solid rgb(10, 12, 90);
+}
+.button{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.butt{
+  padding: 5px 10px;
+  border: 1px solid rgb(131, 194, 162);
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);  
+  cursor: pointer;
+}
+.butt:hover{
+  border: 1px solid rgb(10, 12, 90);
+  opacity: 0.9;
+  color: rgb(131, 194, 162);
+}
+.login a{
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+  color: black;
+  font-size: small;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.error-message{
+  color: black;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+.error-message p{
+  margin: 0;
+  font-weight: 600;
+  background-color: #ff000069;
+  padding: 10px;
+  border-radius: 10pc;
+}

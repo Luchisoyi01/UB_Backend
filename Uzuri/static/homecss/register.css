@@ -1,0 +1,131 @@
+.details {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 10px;  
+}
+
+@media screen and (max-width: 768px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reg, .password {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+form{
+  max-width: 90%;
+  margin: 20px auto;
+}
+input {
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+  border-radius: 5px;
+  border: 1px solid rgb(131, 194, 162);
+  padding: 10px;
+  outline: none;
+  width: 100%;
+}
+
+input:focus {
+  border: 1px solid rgb(10, 12, 90); 
+  outline: none; 
+}
+
+label {
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.account-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .account-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.generate-btn {
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border: 1px solid rgb(131, 194, 162);
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);  
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.generate-btn:hover, .submit:hover{
+  border: 1px solid rgb(10, 12, 90);
+  opacity: 0.9;
+  color: rgb(131, 194, 162);
+}
+.grid-container {  
+  display: grid;
+  border: 1px solid rgb(131, 194, 162);
+  border-radius: 5px;
+  padding: 48px 15px;
+  margin-right: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+  width: calc(100% - 20px);
+  margin-bottom: 5px;
+}
+.grid-item {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+.grid-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.grid-item input[type="checkbox"] {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  z-index: 10;
+  opacity: 0;
+  cursor: pointer;
+}
+.grid-item input[type="checkbox"]:checked + img {
+  border: 2px solid rgb(10, 12, 90);
+}
+.button {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.submit{
+  margin: 0 10px;
+  padding: 10px 15px;
+  border: 1px solid rgb(131, 194, 162);
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);  
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background-color 0.3s, color 0.3s;
+}
