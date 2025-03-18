@@ -1,0 +1,79 @@
+{% extends 'adminpanel/base.html' %}
+{% load static %}
+{% block title %}Uzuri Bank Admin{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'Styles/profile.css' %}" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+{% endblock %}
+{% block content %} 
+  <hr />
+  <div class="profile-update">
+    <h2>Update {{ client.Name }}'s Profile </h2>
+    <br>
+    <form action="{% url 'home:adminprofile' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="profile">
+        <div class="sub_profile">
+          <!-- Profile Image Upload -->
+          <label for="profileImage">Upload Profile Image:</label>
+          <input type="file" id="profileImage" name="Image_Upload" accept="image/*" onchange="previewImage()" /> 
+
+          <!-- Image Preview -->
+          <img id="imagePreview" src="{% if client.Image_Upload %}{{ client.Image_Upload.url }}{% else %}{% static 'images/home.jpeg' %}{% endif %}" alt="Image Preview" />
+      
+          <!-- Username Input -->
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="Username" value="{{ client.Username }}" placeholder="Enter Username" />
+      
+          <!-- Name Input -->
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="Name" value="{{ client.Name }}" placeholder="Enter Name" />
+      
+          <!-- Account Number (Read-Only) -->
+          <label for="accountNumber">Account Number:</label>
+          <input type="text" id="accountNumber" name="Account_Number" value="{{ account_number }}" placeholder="Enter Account Number" disabled />
+      
+          <!-- ID Number (Read-Only) -->
+          <label for="idNumber">ID Number:</label>
+          <input type="number" id="idNumber" name="ID_Number" value="{{ id_number }}" placeholder="Enter ID Number" disabled />
+      
+          <!-- Email Input -->
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="Email" value="{{ client.Email }}" placeholder="Enter Email"/>
+        </div>
+        <div class="sub_profile">
+          <!-- Phone Number Input -->
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="text" id="phoneNumber" name="Phone_Number" value="{{ client.Phone_Number }}" placeholder="Enter Phone Number" />
+      
+          <!-- Address Input -->
+          <label for="address">Address:</label>
+          <input type="text" id="address" name="Address" value="{{ client.Address }}" placeholder="Enter Address" />
+      
+          <!-- Password Image Selection -->
+          <label for="password">Password:</label>
+          <div class="grid-container">          
+            {% for image in password_images %}
+            <label class="grid-item">
+              <input type="checkbox" class="image-checkbox" name="password_images" value="{{ image.id }}" {% if image in client.Password_Image.all %} checked {% endif %}>
+              <img src="{{ image.image.url }}" alt="Image {{ image.id }}">    
+            </label>
+            {% endfor %} 
+          </div>
+        </div>
+      </div>  
+      <!-- Buttons -->
+      <div class="buttons">
+        <a href="{% url 'home:admin_page' %}">
+          <button type="button" class="cancel-btn" onclick="window.location.href='index.html'">Home</button>
+        </a>
+        <button type="submit" class="save-btn">Save</button>
+      </div>
+    </form>    
+  </div> 
+{% endblock %}
+{% block scripts %}
+  <script src="{% static 'Script/profile.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+{% endblock %}

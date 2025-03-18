@@ -1,0 +1,59 @@
+{% extends 'adminpanel/base.html' %}
+{% load static %}
+{% block title %}Uzuri Bank Admin{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'AdminStyles/index.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+{% endblock %}
+{% block content %}  
+  <hr />
+  <section class="main">
+    <div class="accounts">
+      <h2>Total amount in accounts</h2>
+      <div class="balance">
+        <div>
+          <h3>KSH</h3>
+          <h3>{{ grand_total |floatformat:2}}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="transactions">
+      <h2>Total transactions</h2>
+      <div class="transaction">
+        <div>
+          <h3>Number</h3>
+          <h3>{{ total_transactions }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="clients">
+      <h2>Total number of clients</h2>
+      <div class="client">
+        <div>
+          <h3>Active clients</h3>
+          <h3>{{ client_count }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="loans">
+      <h2>Loans</h2>
+      <div class="loan">
+        <div>
+          <h3>Issued</h3>
+          <h3>KSH {{ approved_loans_total |floatformat:2 }}</h3>
+        </div>
+        <div>
+          <h3>Remaining</h3>
+          <h3>KSH {{ remaining_loan_balance |floatformat:2 }}</h3>
+        </div>
+        <div>
+          <h3>Paid</h3>
+          <h3>KSH {{ loan_difference |floatformat:2}}</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>© 2024 Uzuri Bank. All rights reserved.</p>
+  </footer>  
+{% endblock %}
