@@ -1,0 +1,198 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  
+}
+.header{
+  display: flex;
+  flex-direction: row;
+  height: 3rem;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-between;
+}
+.leftnav img{
+  height: 100px;
+  margin-left: -30px;
+}
+.leftnav a{
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  color: rgb(10, 12, 90);
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 700; 
+  font-size: medium;
+}
+.leftnav a:hover{
+  color: rgb(131, 194, 162);
+  transition: 1s;  
+}
+.leftnav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.rightnav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+/*Notifcation bell*/ 
+.bell {
+  border: 2.17px solid rgb(10, 12, 90);
+  border-radius: 10px 10px 0 0;
+  width: 15px;
+  height: 17px;
+  background: transparentr;
+  display: block;
+  position: relative;
+  top: -3px;
+}
+.bell::before,
+.bell::after {
+  content: "";
+  background: rgb(10, 12, 90);
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2.17px;
+}
+.bell::before {
+  top: 100%;
+  width: 20px;
+}
+.bell::after {
+  top: calc(100% + 4px);
+  width: 7px;
+}
+/*container main styling*/
+.notification {
+  background: transparent;
+  border: none;
+  padding: 15px 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 300ms;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notification::before {
+  content: "1";
+  color: white;
+  font-size: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.notification:hover {
+  background: rgba(170, 170, 170, 0.062);
+}
+.notification:hover > .bell-container {
+  animation: bell-animation 650ms ease-out 0s 1 normal both;
+}
+/*bell ring and scale animation*/
+@keyframes bell-animation {
+  20% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(-15deg);
+    transform: scale(1.1);
+  }
+  60% {
+    transform: rotate(10deg);
+    transform: scale(1.1);
+  }
+  80% {
+    transform: rotate(-10deg);
+  }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+/*profile image*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+}
+.dropdown-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgb(131, 194, 162);
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #ffffff;
+  min-width: 200px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-header {
+  text-align: center;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+.dropdown-header img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.dropdown-header p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+}
+.dropdown-content a {
+  color: #333;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+.dropdown-content a i {
+  font-size: 16px;
+  color: #555;
+}
+hr{
+  margin: 0;
+  border-color: rgb(131, 194, 162)
+}
